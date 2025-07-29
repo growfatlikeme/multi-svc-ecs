@@ -15,4 +15,4 @@ EXPOSE 5002
 
 #Start flask app
 ENTRYPOINT ["python"]
-CMD ["app.py"]
+CMD ["sqs-app.py"]

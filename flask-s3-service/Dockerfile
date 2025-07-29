@@ -15,4 +15,4 @@ EXPOSE 5001
 
 #Start flask app
 ENTRYPOINT ["python"]
-CMD ["app.py"]
+CMD ["s3-app.py"]
