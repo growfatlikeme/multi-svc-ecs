@@ -5,7 +5,7 @@ on:
   push:
     branches: ["dev"]
     paths:
-      - "flask-sq3-service/**"
+      - "flask-sqs-service/**"
   workflow_dispatch:
 
 jobs:
@@ -47,6 +47,11 @@ jobs:
       - name: Download task definition
         run: |
           aws ecs describe-task-definition --task-definition ${{ vars.SQS_TASK_DEF }} --query taskDefinition > task-definition.json
+
+      - name: Clean task definition
+        run: |
+          jq 'del(.containerDefinitions[].restartPolicy, .containerDefinitions[].versionConsistency)' task-definition.json > cleaned-task-definition.json
+          mv cleaned-task-definition.json task-definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
