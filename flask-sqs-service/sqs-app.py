@@ -25,7 +25,7 @@ SQS_FORM = """
       <label>Message:</label>
       <input type="text" name="message" required/>
       <br/><br/>
-      <button type="submit">Send to SQS</button>
+      <button type="submit">Send to growfat SQS</button>
     </form>
   </body>
 </html>
@@ -51,7 +51,7 @@ def send():
         return f"Message sent to SQS! (MessageId: {message_id})"
     except Exception as exc:
         logger.exception("Error sending message to SQS.")
-        return f"Error sending message to SQS: {str(exc)}", 500
+        return f"Error sending message to SQS: {str(exc)}", 500 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5002)
+    app.run(host="0.0.0.0", port=5002) 

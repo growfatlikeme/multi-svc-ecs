@@ -47,10 +47,10 @@ def upload_file():
     try:
         s3_client.upload_fileobj(file_obj, BUCKET_NAME, filename)
         logger.info("File '%s' uploaded to bucket '%s'.", filename, BUCKET_NAME)
-        return f"File '{filename}' uploaded successfully to S3 bucket '{BUCKET_NAME}'!"
+        return f"File '{filename}' uploaded successfully to growfat S3 bucket '{BUCKET_NAME}'!"
     except Exception as exc:
         logger.exception("Error uploading file to S3.")
         return f"Error uploading file: {str(exc)}", 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
+    app.run(host="0.0.0.0", port=5001) 
